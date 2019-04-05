@@ -1,0 +1,55 @@
+<html>
+  <head>
+      <script src="p5.min.js"></script>
+      <script src="jumper.js"></script>
+      <script src="barrier.js"></script>
+      <script src="p5.collide2d.min.js"></script>
+      
+      <style>
+        body {
+          overflow: hidden;
+        }
+      </style>
+  </head>
+  <body>
+    <script>
+    
+    var hit;
+    var hit2;
+    
+   /* var w = window.innerWidth;
+    var h = window.innerHeight;
+    var jumper = new jumper();
+    var barrier = new barrier(); */
+    
+    function setup() {
+      createCanvas(w,h);
+    }
+    
+    function draw() {
+      background(0);
+      jumper.show();
+      jumper.update();
+      barrier.show();
+      barrier.update();
+      
+      hit = collideRectCircle(barrier.x, barrier.y, barrierW, barrierH, jumper.x, jumper.y,50);
+      if (hit) {
+        noloop();
+      }
+      
+      hit 2 = collideRectCircle(platform.x, platform.y, 50, 50, jumper.x, jumper.y, 50);
+      if (hit2) {
+        jumper.velocity += -6;
+      }
+      if (keyIsDown(39)) { //right
+        jumper.x += 5;
+      }
+      if (keyIsDown(37)) { //left
+        jumper.x += -5;
+      }
+    }
+    
+  </script>
+  </body>
+</html>
