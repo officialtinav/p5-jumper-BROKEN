@@ -1,8 +1,8 @@
 var w = window.innerWidth;
 var h = window.innerHeight;
 var barrier = new barrier();
-var barrierW = 120;
-var barrierH = 40;
+var barrierW = 100;
+var barrierH = 30;
 
     function barrier() {
       this.x = w;
@@ -24,7 +24,7 @@ var barrierH = 40;
        
        if (this.x < 0) {
          this.x = w;
-         this.y = w;
+         this.y = h;
          this.y = random(h);
          this.gravity = random(2,5)
          barrierH = random(50,100)

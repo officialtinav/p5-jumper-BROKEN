@@ -30,6 +30,7 @@
       background(0);
       jumper.show();
       jumper.update();
+      
       barrier.show();
       barrier.update();
       
@@ -38,9 +39,9 @@
         noloop();
       }
       
-      hit 2 = collideRectCircle(platform.x, platform.y, 50, 50, jumper.x, jumper.y, 50);
+      hit2 = collideRectCircle(platform.x, platform.y, 50, 50, jumper.x, jumper.y, 50);
       if (hit2) {
-        jumper.velocity += -6;
+        jumper.velocity += -5;
       }
       if (keyIsDown(39)) { //right
         jumper.x += 5;
