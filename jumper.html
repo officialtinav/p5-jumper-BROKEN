@@ -35,11 +35,35 @@
       barrier.update();
       
       hit = collideRectCircle(barrier.x, barrier.y, barrierW, barrierH, jumper.x, jumper.y,50);
+      
+      hit2 = collideRectCircle(jumper.x, jumper.y, barrierW, barrierH, jumper.x, jumper.y,50);
+      
+  /*  hit = collideRectCircle {
+	  barrier.x
+	  barrier.y
+	  50,
+	  50,
+	  jumper.x
+	  jumper.y
+	  50,
+	  50,
+	}
+	
+	 hit2 = collideRectCircle {
+	  barrier.x
+	  barrier.y
+	  50,
+	  50,
+	  jumper.x
+	  jumper.y
+	  50,
+	  50,
+	} */
+      
       if (hit) {
         noloop();
       }
       
-      hit2 = collideRectCircle(platform.x, platform.y, 50, 50, jumper.x, jumper.y, 50);
       if (hit2) {
         jumper.velocity += -5;
       }
