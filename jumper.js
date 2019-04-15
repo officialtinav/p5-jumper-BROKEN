@@ -1,11 +1,6 @@
-var girl; //globla variable for character
 
 function preload() {
   girl = loadImage("female.png");
-}
-
-function draw() {
-  image(girl, this.x, this.y);
 }
 
     function jumper() {

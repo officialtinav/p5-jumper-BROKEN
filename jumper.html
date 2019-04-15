@@ -54,13 +54,16 @@
     var jumper = new jumper();
     var barrier = new barrier();
     var barrier2 = new barrier2();
-    var girl;
+    var img;
     
     var hit = false;
     var hit2 = false;
     var score = 0;
     
     /* var song; //global variable */
+    function preload() {
+      img = loadImage("female.png")
+    }
     
     function setup() {
       createCanvas(w,h);
@@ -85,7 +88,7 @@
       barrier2.update();
     /*  barrier2.kill(); */
   
-      
+      image(img, this.x, this.y);
     /*  document.addEventListener('keyup', function(e)) {
         if(e.keycode == 82) //r
         window.location.reload();
