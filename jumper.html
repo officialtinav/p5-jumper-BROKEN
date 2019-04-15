@@ -1,3 +1,4 @@
+
 <html>
   <head>
       <script src="p5.min.js"></script>
@@ -5,75 +6,134 @@
       <script src="barrier.js"></script>
       <script src="p5.collide2d.min.js"></script>
       
-      <style>
+       <style>
         body {
           overflow: hidden;
+          margin: 0;
+          padding: 0;
+          background-image: url("2_21.png");
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: 0px;
+        }
+        
+        #lose {
+          font-size: 50px;
+          text-align: center;
+          font-family: monospace;
+        }
+        
+        #score {
+          font-family: monospace;
+        }
+        
+        #directions {
+          font-family: monospace;
+        }
+        
+        #directions2 {
+          font-family: monospace;
         }
       </style>
   </head>
   <body>
+    
+    <h1 id = "lose"></h1>
+    <h2 id = "score"></h2>
+    
+    <div>
+      <h1 id = "title"></h1>
+      <h2 id = "directions"></h2>
+      <h2 id = "directions2"></h2>
+      <h2 id = "instructions"></h2>
+    </div>
+    
     <script>
-    
-    var hit;
-    var hit2;
-    
-   /* var w = window.innerWidth;
+    var w = window.innerWidth;
     var h = window.innerHeight;
     var jumper = new jumper();
-    var barrier = new barrier(); */
+    var barrier = new barrier();
+    var barrier2 = new barrier2();
+    var girl;
+    
+    var hit = false;
+    var hit2 = false;
+    var score = 0;
+    
+    /* var song; //global variable */
     
     function setup() {
       createCanvas(w,h);
+     /* girl = loadImage("assets/female.png"); */
+      /* girl = createGraphics(50,50); */
+     /* song = loadSound("bobabeach.mp3");
+      song.play(); */
     }
     
     function draw() {
-      background(0);
+      clear();
+      background("rgba(255,255,255,0)");
+      
       jumper.show();
       jumper.update();
       
       barrier.show();
       barrier.update();
+    /*  barrier.kill(); */
       
-      hit = collideRectCircle(barrier.x, barrier.y, barrierW, barrierH, jumper.x, jumper.y,50);
+      barrier2.show();
+      barrier2.update();
+    /*  barrier2.kill(); */
+  
       
-      hit2 = collideRectCircle(jumper.x, jumper.y, barrierW, barrierH, jumper.x, jumper.y,50);
-      
-  /*  hit = collideRectCircle {
-	  barrier.x
-	  barrier.y
-	  50,
-	  50,
-	  jumper.x
-	  jumper.y
-	  50,
-	  50,
-	}
-	
-	 hit2 = collideRectCircle {
-	  barrier.x
-	  barrier.y
-	  50,
-	  50,
-	  jumper.x
-	  jumper.y
-	  50,
-	  50,
-	} */
-      
-      if (hit) {
-        noloop();
-      }
-      
-      if (hit2) {
-        jumper.velocity += -5;
-      }
-      if (keyIsDown(39)) { //right
-        jumper.x += 5;
-      }
-      if (keyIsDown(37)) { //left
-        jumper.x += -5;
-      }
+    /*  document.addEventListener('keyup', function(e)) {
+        if(e.keycode == 82) //r
+        window.location.reload();
+      }) */
+    
+    //when jumper hits barrier, stop loop
+      hit = collideRectCircle (
+        barrier.x,
+        barrier.y,
+        150,
+        150,
+        jumper.x,
+        jumper.y,
+        100 //one parameter
+        );
+        
+        
+        hit2 = collideRectCircle (
+        barrier2.x,
+        barrier2.y,
+        150,
+        150,
+        jumper.x,
+        jumper.y,
+        100 //one parameter
+        );
+        
+
+       console.log(hit + " / " + hit2);
+       if((hit == true) || (hit2 == true)) {
+      document.getElementById('lose').innerHTML = "you lose";
+      noLoop();
     }
+    }
+    
+    document.getElementById('directions').innerHTML = "arrow keys - move left and right";
+    document.getElementById('directions2').innerHTML = "spacebar - jump";
+    document.getElementById('score').innerHTML = "score: "+ score;
+    
+   
+    
+  /*  this.kill = function() {
+      d = dist(this.x,this.y,jumper.x, jumper.y);
+      if (d<50) {
+        noLoop();
+        document.getElementById('loser').innerHTML = "LOSER!"
+      }
+    } */
     
   </script>
   </body>
