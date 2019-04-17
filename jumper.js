@@ -1,7 +1,4 @@
 
-function preload() {
-  girl = loadImage("female.png");
-}
 
     function jumper() {
       this.x = 50;
@@ -13,7 +10,7 @@ function preload() {
       this.show = function() {
        /* fill(color('red'));
         ellipse(this.x,this.y,50,50); */
-        
+        image(img, this.x, this.y);
         //image(characterLeft (variable name), jumper.xx and y position
         
        /* image(girl, this.x,this.y); */
